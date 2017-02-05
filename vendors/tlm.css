@@ -1,0 +1,11 @@
+.page-container {
+	background: #fff;
+}
+.logo {
+	float: left;
+	background: transparent;
+	margin-right: 30px;
+}
+.test-title {
+	display: inline-block;
+}
