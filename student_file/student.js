@@ -228,11 +228,7 @@ function getLastElement(array) {
   } else {
       return array[array.length - 1];
   }
-}
-
-// Tests
-// should_return_the_last_element_of_an_array
-// should_return_undefined_if_the_array_is_empty
+};
 
 /*
 ==========================================================================
@@ -383,7 +379,7 @@ function getElementsAfter(array, n) {
   }
   return array.slice(n + 1);
 }
-
+// remove
 // Tests
 // should_return_an_array
 // should_return_an_array_with_all_the_elements_of_the_passed_in_array_after_the_nth

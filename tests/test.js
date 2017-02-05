@@ -142,14 +142,14 @@
 
 describe('Get Last Element', function() {
     it('it should return a number', function() {
-      expect(getLastElement(200)).to.be.a('number');
+      expect(getLastElement([1, 2])).to.be.a('number');
     });
 
-    it('it should return whether the age is greater than 16', function() {
+    it('it should return the last element of an array', function() {
       expect(getLastElement([10, 20 , 30])).to.eql(30);
     });
 
-    it('it should return false if the age is less than 16', function() {
+    it('it should return undefined if the array is empty', function() {
       expect(getLastElement([])).to.eql(undefined);
     });
   });
