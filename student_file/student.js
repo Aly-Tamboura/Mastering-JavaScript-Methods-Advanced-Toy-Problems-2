@@ -44,30 +44,6 @@ Instructions:
 // Starter Code :
 function modulo(num1, num2) {
   // your code here
-  if(isNaN(num2) || num2 === 0 ||isNaN(num1) || !num1 === 0) {
-     return NaN;
- }
- var storage = [];
- var remainder = Math.abs(num1);
- var fin = 0;
- for(var i = 0; i < 100; i++) {
-     storage.push(remainder);
-    remainder -= Math.abs(num2)
- }
-
-for (var k = storage.length - 1; k >= 0; k--) {
-     if(storage[k] >= 0) {
-         fin = storage[k]
-         break;
-     }
- }
- if(num1 < 0) {
-    return -(fin);
- } else
- if(num2 < 0) {
-     return +fin;
- }
-   return fin;
 };
 
 /*
@@ -84,13 +60,6 @@ for (var k = storage.length - 1; k >= 0; k--) {
 // Starter Code :
 function countCharacter(str, char) {
   // your code here
-   var count = 0;
-    for(var i = 0; i < str.length; i++) {
-      if(str[i].indexOf(char) > -1) {
-          count++
-      }
-    }
-    return count
 };
 
 /*
@@ -111,13 +80,7 @@ function countCharacter(str, char) {
 // Starter Code :
 function getStringLength(string) {
   // your code here
-  var count = 0;
-  var a = string.split('');
-  a.forEach( function(item) {
-      count++
-  })
-  return count;
-};
+ };
 
 /*
 ==========================================================================
@@ -139,12 +102,6 @@ function getStringLength(string) {
 // Starter Code :
 function getIndexOf(char, str) {
   // your code here
-    for(var i = 0; i < str.length; i++) {
-    if(str[i] === char) {
-        return i;
-    }
-  }
-  return -1;
 };
 
 /*
@@ -166,20 +123,6 @@ function getIndexOf(char, str) {
 // Starter Code :
 function sumDigits(num) {
   // your code here
-  var sum = 0;
-  if(num < 0) {
-    var string = num.toString().split('').splice(1);
-    sum = -string[0]
-    for(var i = 1; i < string.length; i++) {
-        sum += Number(string[i]);
-    }
-  } else {
-     var string = num.toString().split('');
-    for(var i = 0; i< string.length; i++) {
-      sum += Number(string[i]);
-    }
-  }
-  return sum;
 };
 
 /*
@@ -199,11 +142,6 @@ function sumDigits(num) {
 // Starter Code :
 function getFirstElement(array) {
   // your code here
-   if(array.length === 0) {
-      return undefined;
-  } else {
-      return array[0];
-  }
 };
 
 /*
@@ -223,11 +161,6 @@ function getFirstElement(array) {
 // Starter Code :
 function getLastElement(array) {
   // your code here
-  if(array.length === 0) {
-      return undefined;
-  } else {
-      return array[array.length - 1];
-  }
 };
 
 /*
@@ -246,15 +179,7 @@ function getLastElement(array) {
 // Starter Code :
 function addToBack(arr, element) {
   // your code here
-  arr.push(element);
-  return arr
-}
-
-// Tests
-// should_return_an_array
-// should_add_an_element_to_the_end_of_an_array
-// should_add_an_element_to_the_end_of_an_empty_array
-// should_be_the_same_array_instance_that_was_passed_in
+};
 
 /*
 ==========================================================================
@@ -273,15 +198,8 @@ function addToBack(arr, element) {
 // Starter Code :
 function addToFront(arr, element) {
   // your code here
-  arr.unshift(element);
-  return arr;
-}
+};
 
-// Tests
-// should_return_an_array
-// should_add_an_element_to_the_end_of_an_array
-// should_add_an_element_to_the_end_of_an_empty_array
-// should_be_the_same_array_instance_that_was_passed_in
 /*
 ==========================================================================
 */
@@ -296,16 +214,9 @@ function addToFront(arr, element) {
 // console.log(output); // --> [1, 2]
 
 // Starter Code :
-function removeFromBack(arr) {
+function removeFromBack(array) {
   // your code here
-  arr.pop();
-  return arr;
-}
-
-// Tests
-// should_return_an_array
-// should_return_the_array_with_the_last_element_removed
-// should_handle_an_empty_array
+};
 
 /*
 ==========================================================================
@@ -322,15 +233,7 @@ function removeFromBack(arr) {
 // Starter Code :
 function getAllElementsButFirst(array) {
   // your code here
-    return array.slice(1);
-}
-
-// Tests
-// should_return_an_array
-// should_return_an_array_with_all_the_elements_of_the_passed_in_array_except_for_the_first
-// should_return_an_empty_array_when_passed_in_a_single_element_array
-// should_return_an_empty_array_when_passed_in_an_empty_array
-
+};
 
 /*
 ==========================================================================
@@ -349,16 +252,7 @@ function getAllElementsButFirst(array) {
 // Starter Code :
 function getElementsUpTo(array, n) {
   // your code here
-  return array.slice(0, n);
-}
-
-// Tests
-// should_return_an_array
-// should_return_an_array_with_all_the_elements_of_the_passed_in_array_up_until_the_nth
-// should_return_an_empty_array_when_passed_in_a_single_element_array
-// should_return_a_mirror_of_the_original_array_when_passed_an_n_out_of_range
-// should_return_an_empty_array_when_passed_in_an_empty_array
-
+};
 
 /*
 ==========================================================================
@@ -374,19 +268,7 @@ function getElementsUpTo(array, n) {
 // Starter Code :
 function getElementsAfter(array, n) {
   // your code here
-  if(array.length === 1 ) {
-        return [];
-  }
-  return array.slice(n + 1);
-}
-// remove
-// Tests
-// should_return_an_array
-// should_return_an_array_with_all_the_elements_of_the_passed_in_array_after_the_nth
-// should_return_an_empty_array_when_passed_in_a_single_element_array
-// should_return_an_empty_array_when_passed_an_n_out_of_range
-// should_return_an_empty_array_when_passed_in_an_empty_array
-
+};
 
 /*
 ==========================================================================
@@ -405,12 +287,7 @@ function getElementsAfter(array, n) {
 // Starter Code :
 function getNthElement(array, n) {
   // your code here
-  return array.slice(n, n + 1).pop();
-}
-
-// Tests
-// should_return_the_nth_element_of_an_array
-// should_return_undefined_if_the_array_is_empty
+};
 
 /*
 ==========================================================================
@@ -427,15 +304,7 @@ function getNthElement(array, n) {
 // Starter Code :
 function joinArrays(arr1, arr2) {
   // your code here
-  return [].concat(arr1, arr2);
-}
-
-// Tests
-// should_return_an_array
-// should_return_an_array_with_the_elements_from_the_first_and_then_the_second_array
-// should_handle_empty_arrays_in_the_first_position
-// should_handle_empty_arrays_in_the_second_position
-
+};
 
 /*
 ==========================================================================
@@ -452,15 +321,7 @@ function joinArrays(arr1, arr2) {
 // Starter Code :
 function getAllElementsButLast(array) {
   // your code here
-  return array.slice(0, array.length - 1);
-}
-
-// Tests
-// should_return_an_array
-// should_return_an_array_with_all_the_elements_of_the_passed_in_array_except_for_the_last
-// should_return_an_empty_array_when_passed_in_a_single_element_array
-// should_return_an_empty_array_when_passed_in_an_empty_array
-
+};
 
 /*
 ==========================================================================
@@ -479,10 +340,7 @@ function getAllElementsButLast(array) {
 // Starter Code :
 function removeFromFront(arr) {
   // your code here
-  return arr.slice(1);
-}
-// Tests
-// should_return_an_arrayWrite a function called "computeSumOfAllElements".
+};
 /*
 ==========================================================================
 */
@@ -496,10 +354,9 @@ function removeFromFront(arr) {
 
 // Starter Code :
 function computeSumOfAllElements(arr) {
-  // your code here
-}
-// should_return_the_array_with_the_first_element_removed
-// should_handle_an_empty_array
+  //your code here
+};
+
 /*
 ==========================================================================
 */
@@ -515,16 +372,8 @@ function computeSumOfAllElements(arr) {
 
 // Starter Code :
 function joinArrayOfArrays(arr) {
-  // your code here
-}
-
-// Tests
-// hould_return_an_array
-// should_return_an_array_with_the_elements_from_all_the_nested_arrays
-// should_handle_empty_arrays_in_the_first_position
-// should_handle_empty_arrays_in_the_second_position
-// should_handle_empty_arrays_in_the_third_position
-// should_handle_empty_arrays_in_all_positions
+  //your code here
+};
 
 /*
 ==========================================================================
@@ -540,21 +389,7 @@ function joinArrayOfArrays(arr) {
 // Starter Code :
 function getAllElementsButNth(array, n) {
   // your code here
-  var storage = [];
- for(var i = 0; i < array.length; i++) {
-  if(i !== n) {
-      storage.push(array[i]);
-  }
- }
- return storage;
-}
-
-// Tests
-// should_return_an_array
-// should_return_an_array_with_all_the_elements_of_the_passed_in_array_except_for_the_nth
-// should_return_an_empty_array_when_passed_in_a_single_element_array
-// should_return_a_mirror_of_the_original_array_when_passed_an_n_out_of_range
-// should_return_an_empty_array_when_passed_in_an_empty_array
+};
 
 /*
 ==========================================================================
@@ -574,17 +409,7 @@ function getAllElementsButNth(array, n) {
 // Starter Code :
 function addToBackOfNew(arr, element) {
   // your code here
-  var array = arr.slice(0);
-  array.push(element);
-  return array;
-}
-
-// Tests
-// should_return_an_array
-// should_add_an_element_to_the_end_of_an_array
-// should_add_an_element_to_the_end_of_an_empty_array
-// should_leave_arr_unmodified
-
+};
 
 /*
 ==========================================================================
@@ -604,16 +429,7 @@ function addToBackOfNew(arr, element) {
 // Starter Code :
 function addToFrontOfNew(arr, element) {
   // your code here
-  var array = arr.slice(0);
-  array.unshift(element);
-  return array;
-}
-
-// Tests
-// should_return_an_array
-// should_add_an_element_to_the_front_of_an_array
-// should_add_an_element_to_the_end_of_an_empty_array
-// should_leave_arr_unmodified
+};
 
 /*
 ==========================================================================
@@ -634,38 +450,7 @@ function addToFrontOfNew(arr, element) {
 // Starter Code :
 function removeFromBackOfNew(arr) {
   // your code here
-  var array = arr.slice();
-  array.pop();
-  return array;
-}
-
-// Tests
-// should_return_an_array
-// should_return_an_array_with_the_last_element_of_the_passed_in_array_removed
-// should_handle_an_empty_array
-// should_leave_arr_unmodified
-
-
-/*
-==========================================================================
-*/
-
-// Write a function called "computeSumOfAllElements".
-
-// Given an array of numbers, "computeSumOfAllElements" returns the sum of all the elements in the given array.
-
-// var output = computeSumOfAllElements([1, 2, 3])
-// console.log(output); // --> 6
-
-// Starter Code :
-function computeSumOfAllElements(arr) {
-  // your code here
-}
-
-// Tests
-// should_return_a_number
-// return_the_sum_of_all_elements
-// return_0_if_the_passed_in_array_is_empty
+};
 
 /*
 ==========================================================================
@@ -685,16 +470,8 @@ function computeSumOfAllElements(arr) {
 // Starter Code :
 function joinThreeArrays(arr1, arr2, arr3) {
   // your code here
-  return [].concat(arr1, arr2, arr3);
-}
+};
 
-// Tests
-// should_return_an_array
-// should_return_an_array_with_the_elements_from_the_first_and_then_the_second_array
-// should_handle_empty_arrays_in_the_first_position
-// should_handle_empty_arrays_in_the_second_position
-// should_handle_empty_arrays_in_the_third_position
-// should_handle_empty_arrays_in_all_positions
 /*
 ==========================================================================
 */

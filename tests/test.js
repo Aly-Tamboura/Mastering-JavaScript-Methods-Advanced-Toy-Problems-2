@@ -155,331 +155,336 @@ describe('Get Last Element', function() {
   });
 
    describe('Add to Back', function() {
-    it('it should return a boolean', function() {
-      expect(addToBack(12)).to.be.a('boolean');
+    it('it should return an array', function() {
+      expect(addToBack([1,2])).to.be.an('array');
     });
 
-    it('it should return the length of three words', function() {
-      expect(addToBack(100)).to.eql(false);
+    it('it should add an element to the end of an array', function() {
+      expect(addToBack([1,2], 3)).to.eql([1, 2, 3]);
+    });
+
+    it('it should return the array if no element in present', function() {
+      expect(addToBack([1,2])).to.eql([1,2]);
     });
   });
 
   describe('Add to Front', function() {
-    it('it should return a boolean', function() {
-      expect(addToFront(true, false)).to.be.a('boolean');
+    it('it should return an array', function() {
+      expect(addToFront([1, 2], 3)).to.be.an('array');
     });
 
-    it('it should not use the or || operator', function() {
-      expect(addToFront.toString()).to.not.include('||');
+    it('it should add an element to the front of the array', function() {
+      expect(addToFront([1, 2], 3)).to.eql([3, 1, 2]);
     });
 
-    it('it should return true if the first value is true', function() {
-      expect(addToFront(true, false)).to.eql(true);
+    it('it should add an element to the end of an empty array', function() {
+      expect(addToFront([], 4)).to.eql([4]);
     });
 
-    it('it should return true if the second value is true', function() {
-      expect(addToFront(false, true)).to.eql(true);
-    });
-
-    it('it should return true both values are true', function() {
-      expect(or(true, true)).to.eql(true);
+    it('it should be the same array instance that was passed in', function() {
+      expect(addToFront([1, 2, 3], 3)).to.eql(addToFront([1, 2, 3], 3));
     });
   });
 
   describe('Remove From Back', function() {
 
-    it('it should return a string', function() {
-      expect(removeFromBack('Phil', 25)).to.be.a('string');
+    it('it should return an array', function() {
+      expect(removeFromBack([1,2,3])).to.be.an('array');
     });
 
-    it('it should welcome a 21 year old', function() {
-      expect(removeFromBack('Ted', 21)).to.eql("Welcome, Ted!");
+    it('it should return the array with the last element removed', function() {
+      expect(removeFromBack([1,2,3])).to.eql([1,2]);
     });
 
-    it('it should bounce someone under 21', function() {
-      expect(removeFromBack('Kyle', 12)).to.eql("Go home, Kyle!");
-    });
-
-    it('it should welcome someone over 21', function() {
-      expect(removeFromBack('Granny', 118)).to.eql("Welcome, Granny!");
+    it('it should handle an empty array', function() {
+      expect(removeFromBack([])).to.eql([]);
     });
   });
 
   describe('Get All Elements But First', function() {
 
-    it('it should return a number', function() {
-      expect(getAllElementsButFirst('one', 'seven', 'fifteen')).to.be.a('number');
+    it('it should return an array', function() {
+      expect(getAllElementsButFirst([2,3,4,8])).to.be.an('array');
     });
 
-    it('it should return the maximum length of three words', function() {
-      expect(getAllElementsButFirst('one', 'seven', 'fifteen')).to.eql(7);
+    it('it should return an array with all the elements of the passed in array except for the first', function() {
+      expect(getAllElementsButFirst([10, 12, 11, 13])).to.eql([12, 11, 13]);
     });
 
-    it('it should return the maximum length of three words when there is a tie', function() {
-      expect(getAllElementsButFirst('one', 'two', 'six')).to.eql(3);
+    it('it should return an empty array when passed in a single element array', function() {
+      expect(getAllElementsButFirst([200])).to.eql([]);
+    });
+
+    it('it should return an empty array when passed in an empty array', function() {
+      expect(getAllElementsButFirst([])).to.eql([]);
     });
 
   });
 
   describe('Get Elements Up To', function() {
 
-    it('it should return a number', function() {
-      expect(getElementsUpTo('one', 'seven', 'fifteen')).to.be.a('number');
+    it('it should return an array', function() {
+      expect(getElementsUpTo([3,4,5])).to.be.an('array');
     });
 
-    it('it should return the minimum length of three words', function() {
-      expect(getElementsUpTo('one', 'seven', 'fifteen')).to.eql(3);
+    it('it should return an array with all the elements of the passed in array up until the nth', function() {
+      expect(getElementsUpTo(['a', 'b', 'c', 'd', 'e'], 3)).to.eql(['a', 'b', 'c']);
     });
 
-    it('it should return the minimum length of three words when there is a tie', function() {
-      expect(getElementsUpTo('four', 'five', 'nine')).to.eql(4);
+    it('it should return an empty array when passed in a single element array', function() {
+      expect(getElementsUpTo([3], 1)).to.eql([]);
     });
 
+    it('it should return a mirror of the original array when passed an n out of range', function() {
+      expect(getElementsUpTo([2, 33, 4], 12)).to.eql([2, 33, 4]);
+    });
+
+    it('it should return an empty array when passed in an empty array', function() {
+      expect(getElementsUpTo([])).to.eql([]);
+    });
   });
 
   describe('Get Elements After', function() {
 
-    it('it should return a string', function() {
-      expect(getElementsAfter('how', 'is', 'this')).to.be.a('string');
+    it('it should return an array', function() {
+      expect(getElementsAfter(['a', 'b', 'c', 'd', 'e'], 2)).to.be.an('array');
     });
 
-    it('it should return the longest of three words', function() {
-      expect(getElementsAfter('hi', 'how', 'are', 'your', 'brothers')).to.eql('brothers');
+    it('it should return an array with all the elements of the passed in array after the nth', function() {
+      expect(getElementsAfter(['a', 'b', 'c', 'd', 'e'], 2)).to.eql(['d', 'e']);
     });
 
-    it('it should return the first occurrence of a longest word when there is a tie', function() {
-      expect(getElementsAfter('one', 'two', 'three', 'four', 'seven')).to.eql('three');
+    it('it should return an empty array when passed in a single element array', function() {
+      expect(getElementsAfter(['a'])).to.eql([]);
+    });
+
+   it('it should return an empty array when passed an n out of range', function() {
+      expect(getElementsAfter(['a', 'b', 'c', 'd', 'e'], 20)).to.eql([]);
+    });
+
+   it('it should return an empty array when passed in an empty array', function() {
+      expect(getElementsAfter([], 2)).to.eql([]);
     });
   });
 
   describe('Get Nth Element', function() {
 
-    it('it should return a string', function() {
-      expect(getNthElement(9)).to.be.a('string');
+    it('it should return the nth element of an array', function() {
+     expect(getNthElement([1, 3, 5], 1)).to.eql(3);
     });
 
-    it('it should return the shortest of three words', function() {
-      expect(getNthElement('hi', 'how', 'are', 'your', 'brothers')).to.eql('hi');
-    });
-
-    it('it should return the first occurence of a shortest word when there is a tie', function() {
-      expect(getNthElement('one', 'two', 'three', 'four')).to.eql('one');
+    it('it should return undefined if the array is empty', function() {
+      expect(getNthElement([])).to.eql(undefined);
     });
   });
 
   describe('join Arrays', function() {
 
-    it('it should return a boolean', function() {
-      expect(joinArrays('Lacey', 'muddywaters')).to.be.a('boolean');
+    it('it should return an array', function() {
+      expect(joinArrays([2], [2])).to.be.a('array');
     });
 
-    it('it should return true if the name is longer than 3 characters and the password is at least 8 characters', function() {
-      expect(joinArrays('Butch', 'happyforcoding')).to.eql(true);
+    it('it should return an array with the elements from the first and then the second array', function() {
+      expect(joinArrays([1,2,3], [4,5,6])).to.eql([1,2,3,4,5,6]);
     });
 
-    it('it should return false if the name is less than 3 characters', function() {
-      expect(joinArrays('Jo', 'happyforcoding')).to.eql(false);
+    it('it should handle empty arrays in the first position', function() {
+      expect(joinArrays([], [1,2,3])).to.eql([1,2,3]);
     });
 
-    it('it should return false if the password is not at least 8 characters', function() {
-      expect(joinArrays('Jonet', 'pass')).to.eql(false);
+    it('it should handle empty arrays in the second position', function() {
+      expect(joinArrays([2,4,6], [])).to.eql([2,4,6]);
     });
   });
 
   describe('Get All Elements But Last', function() {
 
-    it('it should return a string', function() {
-      expect(getAllElementsButLast(9)).to.be.a('string');
+    it('it should return an array', function() {
+      expect(getAllElementsButLast([1])).to.be.a('array');
     });
 
-    it('it should return A for scores between 90 and 100', function() {
-      expect(getAllElementsButLast(99)).to.eql('A');
+    it('it should return an array with all the elements of the passed in array except for the last', function() {
+      expect(getAllElementsButLast([99, 100, 200])).to.eql([99, 100]);
     });
 
-    it('it should return B for scores between 80 and 89', function() {
-      expect(getAllElementsButLast(85)).to.eql('B');
+    it('it should return an empty array when passed in a single element array', function() {
+      expect(getAllElementsButLast([100])).to.eql([]);
     });
 
-    it('it should return C for scores between 70 and 79', function() {
-      expect(getAllElementsButLast(75)).to.eql('C');
-    });
-
-    it('it should return D for scores between 60 and 69', function() {
-      expect(getAllElementsButLast(61)).to.eql('D');
-    });
-
-    it('it should return F for 0', function() {
-      expect(getAllElementsButLast(0)).to.eql('F');
-    });
-
-    it('it should return INVALID SCORE for scores less than 0', function() {
-      expect(getAllElementsButLast(-1)).to.eql('INVALID SCORE');
-    });
-
-    it('it should return INVALID SCORE for scores greater than 100', function() {
-      expect(getAllElementsButLast(110)).to.eql('INVALID SCORE');
+    it('it should return an empty array when passed in an empty array', function() {
+      expect(getAllElementsButLast([])).to.eql([]);
     });
   });
 
   describe('Remove From Front', function() {
 
-    it('it should return a string', function() {
-      expect(removeFromFront(9)).to.be.a('string');
+    it('it should return an array', function() {
+      expect(removeFromFront([1,2,3])).to.be.a('array');
     });
 
-    it('it should return A with a plus for scores between 98 and 100', function() {
-      expect(removeFromFront(99)).to.eql('A+');
-    });
-
-    it('it should return A for scores between 93 and 97', function() {
-      expect(removeFromFront(95)).to.eql('A');
-    });
-
-    it('it should return A with a minus for scores between 90 and 92', function() {
-      expect(removeFromFront(91)).to.eql('A-');
+    it('it should remove the first item from the array', function() {
+      expect(removeFromFront([1, 12, 13])).to.eql([12, 13]);
     });
   });
 
   describe('Compute Sum of All Elements', function() {
 
     it('it should return a number', function() {
-      expect(computeSumOfAllElements(9)).to.be.a('number');
+      expect(computeSumOfAllElements([1,2])).to.be.a('number');
     });
 
     it('it should return the summation of numbers up to and including n', function() {
-      expect(computeSumOfAllElements(6)).to.eql(21);
+      expect(computeSumOfAllElements([100, 200, 300])).to.eql(600);
     });
 
-    it('it should return the summation of 0', function() {
-      expect(computeSumOfAllElements(0)).to.eql(0);
+    it('it should return zero for an empty array', function() {
+      expect(computeSumOfAllElements([])).to.eql(0);
     });
   });
 
   describe('Join Array of Arrays', function() {
 
-    it('it should return a string', function() {
-      expect(joinArrayOfArrays('chiwara', 9)).to.be.a('string');
+    it('it should return an array', function() {
+      expect(joinArrayOfArrays([1,2,3], [1])).to.be.a('array');
     });
 
-    it('it should repeat a string a given number of time', function() {
-      expect(joinArrayOfArrays('hi', 6)).to.eql('hihihihihihi');
+    it('it should return an array with the elements from all the nested arrays', function() {
+      expect(joinArrayOfArrays([[1, 4], [true, false], ['x', 'y']])).to.eql([1, 4, true, false, 'x', 'y']);
     });
 
-    it('it should repeat a string 0 number of times returning an empty string', function() {
-      expect(joinArrayOfArrays('jack', 0)).to.eql('');
+    it('it should handle empty arrays in the first position', function() {
+      expect(joinArrayOfArrays([[], [true, false], ['x', 'y']])).to.eql([true, false, 'x', 'y']);
+    });
+
+    it('it should handle empty arrays in the second position', function() {
+      expect(joinArrayOfArrays([[2,3], [], ['x', 'y']])).to.eql([2, 3, 'x', 'y']);
+    });
+
+    it('it should handle empty arrays in the third position', function() {
+      expect(joinArrayOfArrays([[1, 4], [true, false], []])).to.eql([1, 4, true, false,]);
+    });
+
+    it('it should handle empty arrays in all positions', function() {
+      expect(joinArrayOfArrays([],[],[])).to.eql([]);
     });
   });
 
   describe('Get All Elements But Nth', function() {
 
     it('it should return a number', function() {
-      expect(getAllElementsButNth(9)).to.be.a('number');
+      expect(getAllElementsButNth([1, 2, 3], 2)).to.be.a('array');
     });
 
-    it('it should return the factorial of n', function() {
-      expect(getAllElementsButNth(4)).to.eql(24);
+    it('it should return an array with all the elements of the passed in array except for the nth', function() {
+      expect(getAllElementsButNth(['a', 'b', 'c'], 1)).to.eql(['a', 'c']);
     });
 
-    it('it should return the factorial of 1', function() {
-      expect(getAllElementsButNth(1)).to.eql(1);
+    it('it should return an empty array when passed in a single element array', function() {
+      expect(getAllElementsButNth([1], 1)).to.eql([]);
     });
+
+    it('it should return a mirror of the original array when passed an n out of range', function() {
+      expect(getAllElementsButNth([1, 3, 4], 5)).to.eql([1, 3, 4]);
+    });
+
+    it('it should return an empty array when passed in an empty array', function() {
+      expect(getAllElementsButNth([])).to.eql([]);
+    });
+
   });
 
   describe('Add To Back Of New', function() {
 
-    it('it should return a number', function() {
-      expect(addToBackOfNew(10, 100)).to.be.a('number');
+    var arr = [1,2,3]
+
+    it('it should return an array', function() {
+      expect(addToBackOfNew([])).to.be.a('array');
     });
 
-    it('it should sum between the first and second number exclusive', function() {
-      expect(addToBackOfNew(2, 5)).to.eql(9);
+    it('it should add an element to the end of an array', function() {
+      expect(addToBackOfNew(arr, 123)).to.eql([1, 2, 3, 123]);
     });
 
-    it('it should sum between the first and second number exclusive with negatives', function() {
-      expect(addToBackOfNew(-12, -2)).to.eql(-75);
+    it('it should add an element to the end of an empty array', function() {
+      expect(addToBackOfNew([], 12)).to.eql([12]);
     });
 
-    it('it should return 0 if the second number is less than the first', function() {
-      expect(addToBackOfNew(-12, -20)).to.eql(0);
+    it('it should leave arr unmodified', function() {
+      expect(arr).to.eql([1,2,3]);
     });
-    it('it should return 0 if the 2 numbers are equal', function() {
-      expect(addToBackOfNew(20, 20)).to.eql(0);
-    });
+
   });
 
   describe('Add To Front Of New', function() {
 
-    it('it should return a number', function() {
-      expect(addToFrontOfNew(2, 10)).to.be.a('number');
+    var array = [2, 4, 6];
+
+    it('it should return an array', function() {
+      expect(addToFrontOfNew(array)).to.be.a('array');
     });
 
-    it('it should joinArrayOfArrays between the first and second number exclusive', function() {
-      expect(addToFrontOfNew(2, 5)).to.eql(24);
+    it('it should add an element to the front of an array', function() {
+      expect(addToFrontOfNew(array, 1)).to.eql([1, 2, 4, 6]);
+    });
+
+    it('it should add an element to the end of an empty array', function() {
+      expect(addToFrontOfNew([], 2)).to.eql([2]);
+    });
+
+    it('it should leave arr unmodified', function() {
+      expect(array).to.eql([2, 4, 6]);
     });
   });
 
   describe('Remove From Back Of New', function() {
 
-    it('it should return a boolean', function() {
-      expect(removeFromBackOfNew(10)).to.be.a('boolean');
+// Tests
+// should_return_an_array
+// should_return_an_array_with_the_last_element_of_the_passed_in_array_removed
+// should_handle_an_empty_array
+// should_leave_arr_unmodified
+    var removeArr = [10, 20, 30];
+    it('it should return an array', function() {
+      expect(removeFromBackOfNew(removeArr)).to.be.a('array');
     });
 
-    it('it should not use the modulo operator', function() {
-      expect(removeFromBackOfNew.toString()).to.not.include('%');
+    it('it should return an array with the last element of the passed in array removed', function() {
+      expect(removeFromBackOfNew(removeArr)).to.eql([10, 20]);
     });
 
-    it('it should return true when a number is even', function() {
-      expect(removeFromBackOfNew(10)).to.eql(true);
-    });
-  });
-
-  describe('Compute Sum Of All Elements', function() {
-
-    it('it should return a boolean', function() {
-      expect(computeSumOfAllElements(10)).to.be.a('boolean');
+    it('it should handle an empty array', function() {
+      expect(removeFromBackOfNew([])).to.eql([]);
     });
 
-    it('it should not use the modulo operator', function() {
-      expect(computeSumOfAllElements.toString()).to.not.include('%');
-    });
-
-    it('it should `return true when a number is odd', function() {
-      expect(computeSumOfAllElements(11)).to.eql(true);
-    });
-
-    it('it should return true when a negative number is odd', function() {
-      expect(computeSumOfAllElements(-11)).to.eql(true);
-    });
-
-    it('it should return false when a number is even', function() {
-      expect(computeSumOfAllElements(10)).to.eql(false);
-    });
-
-    it('it should return false when a negative number is even', function() {
-      expect(computeSumOfAllElements(-10)).to.eql(false);
-    });
-
-    it('it should return false when a passed 0', function() {
-      expect(computeSumOfAllElements(0)).to.eql(false);
+    it('it should leave arr unmodified', function() {
+      expect(removeArr).to.eql([10, 20, 30]);
     });
   });
 
   describe('Join Three Arrays', function() {
 
-    it('it should return a number', function() {
-      expect(joinThreeArrays(10)).to.be.a('number');
+    it('it should return an array', function() {
+      expect(joinThreeArrays([], [], [])).to.be.a('array');
     });
 
-    it('it should joinThreeArrays two numbers', function() {
-      expect(joinThreeArrays(2,5)).to.eql(10);
+    it('it should return an array with the elements from the first and then the second array', function() {
+      expect(joinThreeArrays([1,2], [3, 4], [])).to.eql([1, 2, 3, 4]);
     });
 
-    it('it should not use the joinThreeArrays operator', function() {
-      expect(joinThreeArrays.toString()).to.not.include('*');
+    it('it should handle empty arrays in the first position', function() {
+      expect(joinThreeArrays([], [3, 4], [5, 6])).to.eql([3, 4, 5, 6]);
     });
 
-    it('it should_joinThreeArrays_negative_numbers', function() {
-      expect(joinThreeArrays(-2, -2)).to.eql(4);
+    it('it should handle empty arrays in the second position', function() {
+      expect(joinThreeArrays([1, 2], [], [3, 4])).to.eql([1, 2, 3, 4]);
+    });
+
+    it('it should handle empty arrays in the third position', function() {
+      expect(joinThreeArrays([1,2], [3, 4], [])).to.eql([1, 2, 3, 4]);
+    });
+
+    it('it should handle empty arrays in all positions', function() {
+      expect(joinThreeArrays([1,2], [3, 4], [5, 6])).to.eql([1, 2, 3, 4, 5, 6]);
     });
   });
 
