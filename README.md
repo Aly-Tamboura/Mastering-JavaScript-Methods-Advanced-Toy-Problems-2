@@ -1,10 +1,10 @@
 	## Guidelines
 
-This is a repo for Code 7370 students to use to learn how to iterate over tree data types.
+This is a repo for Code 7370 students to use to learn advanced algorithms.
 
 #Instructors
 
--Remove the Mastering_Methods_Advanced_3_Answers.js located in the root directory.
+-Remove the Mastering_Methods_Advanced_Toy_Problems_1_Answers.js located in the root directory.
 
 #Students
 
